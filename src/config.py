@@ -1,4 +1,5 @@
 import os
+from typing import Optional
 from dotenv import load_dotenv
 
 # Load environment variables from .env file (if it exists)
@@ -11,7 +12,7 @@ class BotConfig:
     """
     
     @staticmethod
-    def get_env_var(var_name: str, default: str | None = None, required: bool = True) -> str:
+    def get_env_var(var_name: str, default: Optional[str] = None, required: bool = True) -> str:
         value = os.getenv(var_name, default)
         if required and not value:
             raise ValueError(f"Environment variable {var_name} is strictly required.")
